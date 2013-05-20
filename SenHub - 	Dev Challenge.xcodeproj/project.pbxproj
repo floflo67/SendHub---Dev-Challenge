@@ -19,6 +19,8 @@
 		54B4BBBC174A916100F6215B /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B4BBBA174A916100F6215B /* MainStoryboard.storyboard */; };
 		54B4BBBF174A916100F6215B /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4BBBE174A916100F6215B /* MasterViewController.m */; };
 		54B4BBC2174A916100F6215B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4BBC1174A916100F6215B /* DetailViewController.m */; };
+		54B4BBCB174A9A8E00F6215B /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4BBCA174A9A8E00F6215B /* ContactsViewController.m */; };
+		54B4BBCE174A9AA400F6215B /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B4BBCD174A9AA400F6215B /* MessagesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,10 @@
 		54B4BBBE174A916100F6215B /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		54B4BBC0174A916100F6215B /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		54B4BBC1174A916100F6215B /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		54B4BBC9174A9A8E00F6215B /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		54B4BBCA174A9A8E00F6215B /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		54B4BBCC174A9AA400F6215B /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
+		54B4BBCD174A9AA400F6215B /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,7 @@
 		54B4BBA8174A916100F6215B /* SenHub - 	Dev Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				54B4BBC8174A99CF00F6215B /* Classes */,
 				54B4BBB1174A916100F6215B /* AppDelegate.h */,
 				54B4BBB2174A916100F6215B /* AppDelegate.m */,
 				54B4BBBA174A916100F6215B /* MainStoryboard.storyboard */,
@@ -110,6 +117,17 @@
 				54B4BBB8174A916100F6215B /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		54B4BBC8174A99CF00F6215B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				54B4BBC9174A9A8E00F6215B /* ContactsViewController.h */,
+				54B4BBCA174A9A8E00F6215B /* ContactsViewController.m */,
+				54B4BBCC174A9AA400F6215B /* MessagesViewController.h */,
+				54B4BBCD174A9AA400F6215B /* MessagesViewController.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +200,8 @@
 				54B4BBB3174A916100F6215B /* AppDelegate.m in Sources */,
 				54B4BBBF174A916100F6215B /* MasterViewController.m in Sources */,
 				54B4BBC2174A916100F6215B /* DetailViewController.m in Sources */,
+				54B4BBCB174A9A8E00F6215B /* ContactsViewController.m in Sources */,
+				54B4BBCE174A9AA400F6215B /* MessagesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
