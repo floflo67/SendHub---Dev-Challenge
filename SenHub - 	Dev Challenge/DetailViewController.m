@@ -17,7 +17,8 @@
 - (void)dealloc
 {
     [_detailItem release];
-    [_detailDescriptionLabel release];
+    [_detailPhoneTextField release];
+    [_detailNameTextField release];
     [super dealloc];
 }
 
@@ -36,24 +37,19 @@
 
 - (void)configureView
 {
-    // Update the user interface for the detail item.
-
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem name];
+        //self.detailDescriptionLabel.text = [self.detailItem name];
+        self.detailNameTextField.text = [self.detailItem name];
+        self.detailPhoneTextField.text = [NSString stringWithFormat:@"%@",[self.detailItem number]];
     }
-}
-
-- (void)ChangeText
-{
-    self.detailDescriptionLabel.text = @"Test";
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = [self.detailItem description];
-    UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(ChangeText)] autorelease];
-    self.navigationItem.rightBarButtonItem = addButton;
+    self.navigationItem.title = [self.detailItem name];
+    //UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(ChangeText)] autorelease];
+    //self.navigationItem.rightBarButtonItem = addButton;
     
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];

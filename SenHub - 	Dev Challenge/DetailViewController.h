@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ContactsViewController.h"
 
 @interface DetailViewController : UIViewController
 
-@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) ContactsViewController* detailItem;
 
-@property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (retain, nonatomic) IBOutlet UITextField *detailPhoneTextField;
+@property (retain, nonatomic) IBOutlet UITextField *detailNameTextField;
 
 @end
