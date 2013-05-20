@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ContactsViewController.h"
 
 @implementation AppDelegate
 
@@ -47,6 +48,17 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
++ (NSMutableArray*)getListContacts
+{
+    NSMutableArray* array = [[NSMutableArray alloc] init];
+    ContactsViewController* cvc = [[ContactsViewController alloc] initWithID:6855952
+                                                                        name:@"Florian Reiss"
+                                                                      number:@"+14156236374"
+                                                                         uri:@"/v1/contacts/6855952/"];
+    [array addObject:cvc];
+    return array;
 }
 
 @end
