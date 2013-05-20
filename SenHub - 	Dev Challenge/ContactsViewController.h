@@ -10,4 +10,11 @@
 
 @interface ContactsViewController : UIViewController
 
+@property (nonatomic) int ID;
+@property (strong, nonatomic) NSString* name;
+@property (nonatomic) int number;
+@property (strong, nonatomic) NSString* resource_uri;
+
+- (id)initWithID:(int)ID name:(NSString*)name number:(int)number uri:(NSString*)resource_uri;
+
 @end

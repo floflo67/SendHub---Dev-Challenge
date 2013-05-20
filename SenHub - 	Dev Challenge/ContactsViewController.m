@@ -8,20 +8,15 @@
 
 #import "ContactsViewController.h"
 
-@interface ContactsViewController () {
-    int id;
-    NSString* name;
-    int number;
-    NSString* resource_uri;
-}
+@interface ContactsViewController ()
 
 @end
 
 @implementation ContactsViewController
 
 - (void)dealloc {
-    name = nil;
-    resource_uri = nil;
+    [self.name release];
+    [self.resource_uri release];
     [super dealloc];
 }
 
@@ -31,6 +26,32 @@
     if (self) {
         // Custom initialization
     }
+    return self;
+}
+
+- (id)initWithDict:(NSDictionary*)dict
+{
+    self = [super init];
+    if (self) {
+        [self initWithID:(int)[dict objectForKey:@"ID"]
+                    name:[dict objectForKey:@"name"]
+                  number:(int)[dict objectForKey:@"number"]
+                     uri:[dict objectForKey:@"uri"]];
+    }
+    return self;
+}
+
+- (id)initWithID:(int)ID name:(NSString*)name number:(int)number uri:(NSString*)uri
+{
+    if (!self) {
+        self = [super init];
+    }
+    
+    self.ID = ID;
+    self.name = name;
+    self.number = number;
+    self.resource_uri = uri;
+    
     return self;
 }
 
