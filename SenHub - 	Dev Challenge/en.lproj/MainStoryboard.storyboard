@@ -84,7 +84,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="UJg-Xd-Rf0" kind="push" id="Gke-bz-DBs"/>
+                                    <segue destination="UJg-Xd-Rf0" kind="push" identifier="sendMessage" id="Gke-bz-DBs"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="-- Name --" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="kZN-SC-KJK" userLabel="detailNameTextField">
@@ -92,8 +92,9 @@
                                     <constraint firstAttribute="width" constant="146" id="mNv-Rs-wl0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica-LightOblique" family="Helvetica" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
+                                    <action selector="disableInput:" destination="21" eventType="editingDidBegin" id="tYt-6i-3M2"/>
                                     <action selector="inputReturn:" destination="23" eventType="editingDidEndOnExit" id="kx4-Uy-aBE"/>
                                     <outlet property="delegate" destination="21" id="cR4-JT-Tes"/>
                                 </connections>
@@ -102,6 +103,7 @@
                                 <fontDescription key="fontDescription" name="Helvetica-LightOblique" family="Helvetica" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
+                                    <action selector="disableInput:" destination="21" eventType="editingDidBegin" id="Ayh-N0-7VG"/>
                                     <action selector="inputReturn:" destination="23" eventType="editingDidEndOnExit" id="2Jb-Zg-Pmp"/>
                                     <outlet property="delegate" destination="21" id="MjJ-gR-hNG"/>
                                 </connections>
@@ -140,7 +142,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="26"/>
                     <connections>
-                        <outlet property="detailNameTextField" destination="kZN-SC-KJK" id="CAE-oB-GcQ"/>
+                        <outlet property="detailNameTextField" destination="kZN-SC-KJK" id="oKn-KO-JJf"/>
                         <outlet property="detailPhoneTextField" destination="SXL-W3-II0" id="HGR-Tn-DRk"/>
                     </connections>
                 </viewController>
@@ -156,28 +158,25 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="N2I-Xd-76c">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="Ti5-SB-CeJ"/>
-                                    <constraint firstAttribute="height" constant="300" id="uQA-2R-BIH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica-LightOblique" family="Helvetica" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3kT-JS-F4i">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="send"/>
                                 <connections>
-                                    <outlet property="delegate" destination="UJg-Xd-Rf0" id="eXP-Cd-cxZ"/>
+                                    <action selector="inputReturn:" destination="cXR-AL-Q8Y" eventType="editingDidEndOnExit" id="l5w-e4-bjj"/>
+                                    <outlet property="delegate" destination="UJg-Xd-Rf0" id="6oz-PF-hv8"/>
                                 </connections>
-                            </textView>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="N2I-Xd-76c" firstAttribute="top" secondItem="3yX-sD-z6f" secondAttribute="top" constant="20" symbolic="YES" type="default" id="WJN-iI-57x"/>
-                            <constraint firstItem="N2I-Xd-76c" firstAttribute="centerX" secondItem="3yX-sD-z6f" secondAttribute="centerX" type="default" id="vKX-QT-ZlV"/>
+                            <constraint firstItem="3kT-JS-F4i" firstAttribute="leading" secondItem="3yX-sD-z6f" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="A7s-0T-qoP"/>
+                            <constraint firstAttribute="trailing" secondItem="3kT-JS-F4i" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ArR-9Z-dve"/>
+                            <constraint firstItem="3kT-JS-F4i" firstAttribute="top" secondItem="3yX-sD-z6f" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Lf0-RK-vaS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Compose" id="cpl-gv-2fT" userLabel="Navigation Item"/>
                     <connections>
-                        <outlet property="messageTextField" destination="N2I-Xd-76c" id="Voe-ds-koW"/>
+                        <outlet property="messageTextField" destination="3kT-JS-F4i" id="2o1-lA-XI7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXR-AL-Q8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -190,12 +189,13 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ComposeViewController.h"/>
             <relationships>
                 <relationship kind="action" name="inputReturn:"/>
-                <relationship kind="outlet" name="messageTextField" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="DetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="disableInput:"/>
                 <relationship kind="action" name="inputReturn:"/>
                 <relationship kind="outlet" name="detailNameTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="detailPhoneTextField" candidateClass="UITextField"/>

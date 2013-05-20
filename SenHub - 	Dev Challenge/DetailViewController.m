@@ -35,19 +35,41 @@
     }
 }
 
+- (IBAction)disableInput:(id)sender
+{
+    if(((UITextField*)sender).text) {
+        [sender resignFirstResponder];
+    }
+}
+
 - (void)configureView
 {
     self.detailNameTextField.delegate = self;
     self.detailPhoneTextField.delegate = self;
+    
     if (self.detailItem) {
-        //self.detailDescriptionLabel.text = [self.detailItem name];
-        if([self.detailItem name]) {
-            self.detailNameTextField.text = [self.detailItem name];
-        }
-        self.detailPhoneTextField.text = [NSString stringWithFormat:@"%@",[self.detailItem number]];
+        self.detailNameTextField.text = [self.detailItem name];
         
+        NSString *tenDigitNumber = [[self.detailItem number] substringFromIndex:1];
+        tenDigitNumber = [tenDigitNumber stringByReplacingOccurrencesOfString:@"(\\d{1})(\\d{3})(\\d{3})(\\d{4})"
+                                                                   withString:@"+$1 ($2) $3-$4"
+                                                                      options:NSRegularExpressionSearch
+                                                                        range:NSMakeRange(0, [tenDigitNumber length])];
+        self.detailPhoneTextField.text = tenDigitNumber;
         
     }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"sendMessage"]) {
+        long ID = _detailItem.ID;
+        [[segue destinationViewController] setID:ID];
+    }
+}
+
+- (IBAction)changeText:(id)sender {
+    
 }
 
 - (IBAction)inputReturn:(id)sender
@@ -68,7 +90,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = [self.detailItem name];
-    //UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(ChangeText)] autorelease];
+    //UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit                                                                                target:self action:@selector(changeText:)] autorelease];
     //self.navigationItem.rightBarButtonItem = addButton;
     
 	// Do any additional setup after loading the view, typically from a nib.
