@@ -1,0 +1,14 @@
+//
+//  ComposeViewController.h
+//  SenHub - 	Dev Challenge
+//
+//  Created by Florian Reiss on 20/05/13.
+//  Copyright (c) 2013 Florian Reiss. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface ComposeViewController : UIViewController
+@property (retain, nonatomic) IBOutlet UITextView *messageTextField;
+
+@end
