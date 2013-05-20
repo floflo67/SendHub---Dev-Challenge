@@ -9,6 +9,7 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "ContactsViewController.h"
+#import "AppDelegate.h"
 
 @interface MasterViewController () {
     NSMutableArray *contacts;
@@ -39,6 +40,9 @@
     if(!contacts) {
         contacts = [[NSMutableArray alloc] init];
     }
+    
+    contacts = [AppDelegate getListContacts];
+    
     
 	// Do any additional setup after loading the view, typically from a nib.
     // self.navigationItem.leftBarButtonItem = self.editButtonItem;
@@ -107,7 +111,7 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = contacts[indexPath.row];
+        ContactsViewController *object = contacts[indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
 }
