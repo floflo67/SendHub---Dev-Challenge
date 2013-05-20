@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ComposeViewController : UIViewController
+@interface ComposeViewController : UIViewController <UITextFieldDelegate>
+
 @property (retain, nonatomic) IBOutlet UITextView *messageTextField;
+@property (strong, nonatomic) NSString* message;
 
 @end

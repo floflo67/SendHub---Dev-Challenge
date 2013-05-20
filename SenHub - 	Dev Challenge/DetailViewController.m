@@ -37,11 +37,31 @@
 
 - (void)configureView
 {
+    self.detailNameTextField.delegate = self;
+    self.detailPhoneTextField.delegate = self;
     if (self.detailItem) {
         //self.detailDescriptionLabel.text = [self.detailItem name];
-        self.detailNameTextField.text = [self.detailItem name];
+        if([self.detailItem name]) {
+            self.detailNameTextField.text = [self.detailItem name];
+        }
         self.detailPhoneTextField.text = [NSString stringWithFormat:@"%@",[self.detailItem number]];
+        
+        
     }
+}
+
+- (IBAction)inputReturn:(id)sender
+{
+    if(((UIButton*)sender).tag == 1) { // Name
+        if([_detailItem name] != self.detailNameTextField.text)
+            _detailItem.name = self.detailNameTextField.text;
+    }
+    else if(((UIButton*)sender).tag == 2) { // Phone
+        if([_detailItem number] != self.detailPhoneTextField.text)
+            _detailItem.number = self.detailPhoneTextField.text;
+    }
+    
+    [sender resignFirstResponder];
 }
 
 - (void)viewDidLoad

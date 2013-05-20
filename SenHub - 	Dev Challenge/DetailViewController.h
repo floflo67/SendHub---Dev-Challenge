@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ContactsViewController.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) ContactsViewController* detailItem;
 

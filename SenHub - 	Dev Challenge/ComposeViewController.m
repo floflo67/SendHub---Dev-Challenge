@@ -24,10 +24,18 @@
     return self;
 }
 
+- (IBAction)inputReturn:(id)sender
+{
+    if(self.messageTextField.text.length > 0)
+        self.message = self.messageTextField.text;
+    
+    [sender resignFirstResponder];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self.messageTextField.layer setBorderColor:[[UIColor colorWithRed:171.0/255.0 green:0/255.0 blue:0/255.0 alpha:1.0] CGColor]];
+    self.messageTextField.delegate = self;
 	// Do any additional setup after loading the view.
 }
 
