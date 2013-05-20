@@ -39,13 +39,22 @@
     // Update the user interface for the detail item.
 
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        self.detailDescriptionLabel.text = [self.detailItem name];
     }
+}
+
+- (void)ChangeText
+{
+    self.detailDescriptionLabel.text = @"Test";
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = [self.detailItem description];
+    UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(ChangeText)] autorelease];
+    self.navigationItem.rightBarButtonItem = addButton;
+    
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
 }
