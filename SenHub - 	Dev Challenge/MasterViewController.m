@@ -40,29 +40,12 @@
     
     // Allow suppressing
     // self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-     /*UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                                 target:self
-                                                                                 action:@selector(insertNewObject)]
-                                   autorelease];*/
-     //self.navigationItem.rightBarButtonItem = addButton;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
-
-/*
-- (void)insertNewObject
-{
-    if (!_contacts) {
-        _contacts = [[NSMutableArray alloc] init];
-    }
-    [_contacts insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-}*/
 
 #pragma mark - Table View
 

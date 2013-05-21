@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		541379C7174B321E00789CFD /* APIsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 541379C6174B321E00789CFD /* APIsRequest.m */; };
+		5433588B174BE9A00006E7D5 /* SendButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 54335889174BE9A00006E7D5 /* SendButton.png */; };
+		5433588C174BE9A00006E7D5 /* SendButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5433588A174BE9A00006E7D5 /* SendButton@2x.png */; };
 		54B4BBA3174A916100F6215B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B4BBA2174A916100F6215B /* UIKit.framework */; };
 		54B4BBA5174A916100F6215B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B4BBA4174A916100F6215B /* Foundation.framework */; };
 		54B4BBA7174A916100F6215B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B4BBA6174A916100F6215B /* CoreGraphics.framework */; };
@@ -28,6 +30,8 @@
 /* Begin PBXFileReference section */
 		541379C5174B321E00789CFD /* APIsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIsRequest.h; sourceTree = "<group>"; };
 		541379C6174B321E00789CFD /* APIsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIsRequest.m; sourceTree = "<group>"; };
+		54335889174BE9A00006E7D5 /* SendButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendButton.png; sourceTree = "<group>"; };
+		5433588A174BE9A00006E7D5 /* SendButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendButton@2x.png"; sourceTree = "<group>"; };
 		54B4BB9F174A916100F6215B /* SenHub - 	Dev Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SenHub - \tDev Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B4BBA2174A916100F6215B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		54B4BBA4174A916100F6215B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -68,6 +72,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54335888174BE9960006E7D5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				54335889174BE9A00006E7D5 /* SendButton.png */,
+				5433588A174BE9A00006E7D5 /* SendButton@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		54B4BB96174A916100F6215B = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +111,7 @@
 		54B4BBA8174A916100F6215B /* SenHub - 	Dev Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				54335888174BE9960006E7D5 /* Resources */,
 				54B4BBC8174A99CF00F6215B /* Classes */,
 				541379C5174B321E00789CFD /* APIsRequest.h */,
 				541379C6174B321E00789CFD /* APIsRequest.m */,
@@ -196,6 +210,8 @@
 				54B4BBB7174A916100F6215B /* Default@2x.png in Resources */,
 				54B4BBB9174A916100F6215B /* Default-568h@2x.png in Resources */,
 				54B4BBBC174A916100F6215B /* MainStoryboard.storyboard in Resources */,
+				5433588B174BE9A00006E7D5 /* SendButton.png in Resources */,
+				5433588C174BE9A00006E7D5 /* SendButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
