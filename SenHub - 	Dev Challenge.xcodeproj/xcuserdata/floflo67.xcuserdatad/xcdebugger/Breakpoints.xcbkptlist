@@ -33,19 +33,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "SenHub - &#9;Dev Challenge/DetailViewController.m"
-         timestampString = "390806011.415536"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "50"
-         endingLineNumber = "50"
-         landmarkName = "-disableInput:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "SenHub - &#9;Dev Challenge/MasterViewController.m"
          timestampString = "390851195.122142"
          startingColumnNumber = "9223372036854775807"
@@ -60,20 +47,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SenHub - &#9;Dev Challenge/MasterViewController.m"
-         timestampString = "390851195.122142"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "93"
-         endingLineNumber = "93"
-         landmarkName = "-prepareForSegue:sender:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "SenHub - &#9;Dev Challenge/MasterViewController.m"
-         timestampString = "390851195.122142"
+         timestampString = "390852642.973592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "94"

@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "MasterViewController.h"
 
 @interface DetailViewController ()
 - (void)configureView;
@@ -45,7 +46,7 @@
 
 - (IBAction)disableInput:(id)sender
 {
-    if(((UITextField*)sender).text && ![((UITextField*)sender).text isEqualToString:@"New"]) {
+    if([((UITextField*)sender).text length] > 0) {
         [sender resignFirstResponder];
     }
 }
@@ -70,7 +71,7 @@
 {
     self.navigationItem.title = @"New";
     [self setDetailItem:[[ContactsViewController alloc] init]];
-    self.sendMessageButton.hidden = NO;
+    self.sendMessageButton.hidden = YES;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -79,6 +80,20 @@
         NSString* ID = self.detailItem.ID;
         [[segue destinationViewController] setID:ID];
     }
+}
+
+- (IBAction)saveContact:(id)sender
+{
+    UIAlertView* alert;
+    if([self.detailNameTextField.text length] > 0 && [self.detailPhoneTextField.text length] > 0) {
+        self.detailItem.name = self.detailNameTextField.text;
+        self.detailItem.number = self.detailPhoneTextField.text;
+        alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Contact added" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    }
+    else
+        alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Contact not added" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
 }
 
 - (IBAction)inputReturn:(id)sender
@@ -107,9 +122,9 @@
         [self configureView];
     }
     else {
-        UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+        UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                                                                     target:self
-                                                                                    action:@selector(changeText:)]
+                                                                                    action:@selector(saveContact:)]
                                       autorelease];
         self.navigationItem.rightBarButtonItem = addButton;
         [self configureEmptyView];
