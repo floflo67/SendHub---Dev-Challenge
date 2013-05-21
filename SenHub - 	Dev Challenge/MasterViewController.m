@@ -11,9 +11,8 @@
 #import "ContactsViewController.h"
 #import "AppDelegate.h"
 
-@interface MasterViewController () {
-    NSMutableArray *contacts;
-}
+@interface MasterViewController ()
+
 @end
 
 @implementation MasterViewController
@@ -25,11 +24,11 @@
 
 - (void)dealloc
 {
-    for (ContactsViewController* c in contacts) {
+    for (ContactsViewController* c in self.contacts) {
         [c release];
     }
     
-    [contacts release];
+    [self.contacts release];
     [super dealloc];
 }
 
@@ -37,15 +36,15 @@
 {
     [super viewDidLoad];
     
-    if(!contacts) {
-        contacts = [[NSMutableArray alloc] init];
+    if(!self.contacts) {
+        self.contacts = [[NSMutableArray alloc] init];
     }
     
-    contacts = [AppDelegate getListContacts];
+    self.contacts = [AppDelegate getListContacts];
     
     
 	// Do any additional setup after loading the view, typically from a nib.
-     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    // self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     // UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)] autorelease];
     // self.navigationItem.rightBarButtonItem = addButton;
@@ -79,14 +78,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return contacts.count;
+    return self.contacts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    ContactsViewController *object = contacts[indexPath.row];
+    ContactsViewController *object = self.contacts[indexPath.row];
     cell.textLabel.text = [object name];
     return cell;
 }
@@ -100,7 +99,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [contacts removeObjectAtIndex:indexPath.row];
+        [self.contacts removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -110,8 +109,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        ContactsViewController *object = contacts[indexPath.row];
+        NSIndexPath* indexPath = [self.tableView indexPathForSelectedRow];        
+        ContactsViewController* object = self.contacts[indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
 }
