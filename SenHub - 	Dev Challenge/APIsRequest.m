@@ -76,6 +76,8 @@
      https://api.sendhub.com/v1/messages/?username=NUMBER\&api_key=APIKEY
      */
 
+    UIAlertView *message;
+    
     NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:linkToMessage, API_NUMBER, API_KEY]]; // URL
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] init];
 
@@ -85,17 +87,32 @@
 
     // --data '{"contacts" : [1111],"text" : "Testing"}'
     // should be like this. Not working (yet)
-    [request setValue:[NSString
-                       stringWithFormat:@"'{\"contacts\" : [%@],\"text\" : \"%@\"}'", contactID, text]
-             forHTTPHeaderField:@"data"];
-
+    NSArray* obj = [NSArray arrayWithObjects:[NSString stringWithFormat:@"[%@]", contactID], text, nil];
+    NSArray* key = [NSArray arrayWithObjects:@"contacts", @"text", nil];
+    NSDictionary* jSONDict = [[NSDictionary alloc] initWithObjects:obj
+                                                           forKeys:key];
     NSError* error;
-    NSURLResponse* response;
-    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSData* jSonData = [NSJSONSerialization dataWithJSONObject:jSONDict options:kNilOptions error:&error];
+    
+    NSString *json = [[NSString alloc] initWithData:jSonData encoding:NSUTF8StringEncoding]; // '{"contacts" : [1111],"text" : "Testing"}
+    
+    
+    if(!json) {
+        message = [[UIAlertView alloc] initWithTitle:@"Error"
+                                             message:@"There has been an error during the parsing."
+                                            delegate:nil
+                                   cancelButtonTitle:@"OK"
+                                   otherButtonTitles:nil];
+        [message show];
+        return;
+    }
+    
+    [request setHTTPBody:jSonData];
 
-    UIAlertView *message;
+    NSHTTPURLResponse* response;
+    [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
 
-    if([(NSHTTPURLResponse*)response statusCode] == 201) {
+    if([response statusCode] == 201) {
         message = [[UIAlertView alloc] initWithTitle:@"Success"
                                              message:@"Your text has successfully been sent."
                                             delegate:nil
