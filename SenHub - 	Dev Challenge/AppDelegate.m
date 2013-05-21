@@ -55,10 +55,18 @@
     NSArray* arr;    
     NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:linkForContacts, API_NUMBER, API_KEY]]];
     
-    if(data) {
+    if(data) { // if data exists eg. no error
         arr = [NSArray arrayWithArray:[AppDelegate fetchedData:data]];
     }
-    else {      
+    else {
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                          message:@"There has been an error during the retrieving of contacts."
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+        [message show];
+        [message release];
+        
         ContactsViewController* cvc = [[ContactsViewController alloc] initWithID:6855952
                                                                             name:@"Florian Reiss"
                                                                           number:@"+14156236374"
@@ -71,17 +79,18 @@
 + (NSArray*)fetchedData:(NSData *)responseData {
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
-    NSArray* contacts = [json objectForKey:@"objects"];
+    NSArray* contacts = [json objectForKey:@"objects"]; // contacts = all json as one item
     
-    NSMutableArray* array = [[NSMutableArray alloc] init];
+    NSMutableArray* array = [[[NSMutableArray alloc] init] autorelease];
     
-    for (NSDictionary* contact in contacts) {
+    for (NSDictionary* contact in contacts) { // transforms one json for one contact as a dict
         ContactsViewController* cvc = [[ContactsViewController alloc] initWithID:(long)[contact objectForKey:@"id"]
                                                                             name:[contact objectForKey:@"name"]
                                                                           number:[contact objectForKey:@"number"]
                                                                              uri:[contact objectForKey:@"resource_uri"]];
         [array addObject:cvc];
     }
+    
     return array;
 }
 

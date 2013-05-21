@@ -16,9 +16,9 @@
 
 - (void)dealloc
 {
-    [_detailItem release];
-    [_detailPhoneTextField release];
-    [_detailNameTextField release];
+    [self.detailItem release];
+    [self.detailPhoneTextField release];
+    [self.detailNameTextField release];
     [super dealloc];
 }
 
@@ -26,11 +26,9 @@
 
 - (void)setDetailItem:(id)newDetailItem
 {
-    if (_detailItem != newDetailItem) {
-        [_detailItem release];
-        _detailItem = [newDetailItem retain];
-
-        // Update the view.
+    if (self.detailItem != newDetailItem) {
+        [self.detailItem release];
+        self.detailItem = [newDetailItem retain];
         [self configureView];
     }
 }
@@ -50,6 +48,9 @@
     if (self.detailItem) {
         self.detailNameTextField.text = [self.detailItem name];
         
+        // Converts phone number
+        // +12223334444 becomes +1 (222) 333-4444
+        // Works only for US numbers
         NSString *tenDigitNumber = [[self.detailItem number] substringFromIndex:1];
         tenDigitNumber = [tenDigitNumber stringByReplacingOccurrencesOfString:@"(\\d{1})(\\d{3})(\\d{3})(\\d{4})"
                                                                    withString:@"+$1 ($2) $3-$4"
@@ -63,24 +64,20 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"sendMessage"]) {
-        long ID = _detailItem.ID;
+        long ID = self.detailItem.ID;
         [[segue destinationViewController] setID:ID];
     }
-}
-
-- (IBAction)changeText:(id)sender {
-    
 }
 
 - (IBAction)inputReturn:(id)sender
 {
     if(((UIButton*)sender).tag == 1) { // Name
-        if([_detailItem name] != self.detailNameTextField.text)
-            _detailItem.name = self.detailNameTextField.text;
+        if([self.detailItem name] != self.detailNameTextField.text)
+            self.detailItem.name = self.detailNameTextField.text;
     }
     else if(((UIButton*)sender).tag == 2) { // Phone
-        if([_detailItem number] != self.detailPhoneTextField.text)
-            _detailItem.number = self.detailPhoneTextField.text;
+        if([self.detailItem number] != self.detailPhoneTextField.text)
+            self.detailItem.number = self.detailPhoneTextField.text;
     }
     
     [sender resignFirstResponder];
@@ -93,14 +90,12 @@
     //UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit                                                                                target:self action:@selector(changeText:)] autorelease];
     //self.navigationItem.rightBarButtonItem = addButton;
     
-	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

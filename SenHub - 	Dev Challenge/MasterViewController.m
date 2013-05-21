@@ -24,7 +24,7 @@
 
 - (void)dealloc
 {
-    for (ContactsViewController* c in self.contacts) {
+    for (ContactsViewController* c in self.contacts) { // Release each item in array
         [c release];
     }
     
@@ -37,13 +37,12 @@
     [super viewDidLoad];
     
     if(!self.contacts) {
-        self.contacts = [[NSMutableArray alloc] init];
+        self.contacts = [[[NSMutableArray alloc] init] autorelease];
     }
     
-    self.contacts = [AppDelegate getListContacts];
+    self.contacts = [AppDelegate getListContacts]; // Get the list of contacts
     
-    
-	// Do any additional setup after loading the view, typically from a nib.
+    // Allow suppressing
     // self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     // UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)] autorelease];
@@ -96,6 +95,7 @@
     return YES;
 }
 
+// Part for suppressing.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -106,6 +106,7 @@
     }
 }
 
+// Manages call to detailView
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
