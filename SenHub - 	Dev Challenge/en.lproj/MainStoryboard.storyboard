@@ -57,7 +57,13 @@
                             <outlet property="delegate" destination="12" id="15"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Contacts" id="36"/>
+                    <navigationItem key="navigationItem" title="Contacts" id="36">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ImM-Kb-6jU">
+                            <connections>
+                                <segue destination="21" kind="push" id="z1X-4F-xPx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,13 +77,13 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sA6-Yg-jCe">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sA6-Yg-jCe">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="Djg-nW-rzk"/>
+                                    <constraint firstAttribute="height" constant="35" id="7Xe-iT-rff"/>
+                                    <constraint firstAttribute="width" constant="207" id="YB7-mC-xlP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Send Message">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="SendButton@2x.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -87,7 +93,7 @@
                                     <segue destination="UJg-Xd-Rf0" kind="push" identifier="sendMessage" id="Gke-bz-DBs"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="-- Name --" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="kZN-SC-KJK" userLabel="detailNameTextField">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="kZN-SC-KJK" userLabel="detailNameTextField">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="146" id="mNv-Rs-wl0"/>
                                 </constraints>
@@ -99,7 +105,7 @@
                                     <outlet property="delegate" destination="21" id="cR4-JT-Tes"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="-- Phone Number --" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="SXL-W3-II0" userLabel="detailPhoneTextField">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="SXL-W3-II0" userLabel="detailPhoneTextField">
                                 <fontDescription key="fontDescription" name="Helvetica-LightOblique" family="Helvetica" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
@@ -127,16 +133,16 @@
                             <constraint firstItem="Tai-qP-CtF" firstAttribute="top" secondItem="22" secondAttribute="top" constant="20" symbolic="YES" type="default" id="58i-HP-pif"/>
                             <constraint firstItem="SXL-W3-II0" firstAttribute="top" secondItem="kZN-SC-KJK" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="5NS-lg-DmW"/>
                             <constraint firstItem="Tai-qP-CtF" firstAttribute="trailing" secondItem="VWf-I2-gXL" secondAttribute="trailing" type="default" id="A4i-uj-HEH"/>
+                            <constraint firstItem="kZN-SC-KJK" firstAttribute="leading" secondItem="22" secondAttribute="leading" constant="146" id="BbR-IP-Oyu"/>
                             <constraint firstItem="kZN-SC-KJK" firstAttribute="top" secondItem="22" secondAttribute="top" constant="20" symbolic="YES" type="default" id="DWF-Bv-g0L"/>
                             <constraint firstItem="SXL-W3-II0" firstAttribute="trailing" secondItem="kZN-SC-KJK" secondAttribute="trailing" type="default" id="EFj-Hu-ShS"/>
                             <constraint firstItem="VWf-I2-gXL" firstAttribute="leading" secondItem="22" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="EuM-ZA-NX2"/>
                             <constraint firstItem="VWf-I2-gXL" firstAttribute="top" secondItem="Tai-qP-CtF" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Fdz-lI-dRR"/>
+                            <constraint firstItem="sA6-Yg-jCe" firstAttribute="centerX" secondItem="22" secondAttribute="centerX" type="default" id="HVx-DN-v7d"/>
                             <constraint firstItem="VWf-I2-gXL" firstAttribute="top" secondItem="SXL-W3-II0" secondAttribute="top" type="default" id="N30-AC-RDJ"/>
                             <constraint firstItem="Tai-qP-CtF" firstAttribute="leading" secondItem="22" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="WDd-Jp-czY"/>
-                            <constraint firstItem="kZN-SC-KJK" firstAttribute="leading" secondItem="22" secondAttribute="leading" constant="146" id="bG3-aU-OGn"/>
+                            <constraint firstItem="sA6-Yg-jCe" firstAttribute="top" secondItem="22" secondAttribute="top" constant="234" id="hhw-bG-KWC"/>
                             <constraint firstItem="SXL-W3-II0" firstAttribute="bottom" secondItem="VWf-I2-gXL" secondAttribute="bottom" type="default" id="hq9-WY-blX"/>
-                            <constraint firstItem="sA6-Yg-jCe" firstAttribute="centerX" secondItem="22" secondAttribute="centerX" type="default" id="ld5-XG-BHn"/>
-                            <constraint firstItem="sA6-Yg-jCe" firstAttribute="top" secondItem="22" secondAttribute="top" constant="230" id="m2U-s9-gmM"/>
                             <constraint firstItem="kZN-SC-KJK" firstAttribute="leading" secondItem="SXL-W3-II0" secondAttribute="leading" type="default" id="pGW-4K-JHS"/>
                         </constraints>
                     </view>
@@ -185,6 +191,9 @@
             <point key="canvasLocation" x="1405" y="64"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="SendButton@2x.png" width="414" height="69"/>
+    </resources>
     <classes>
         <class className="ComposeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ComposeViewController.h"/>
@@ -215,4 +224,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="z1X-4F-xPx"/>
+    </inferredMetricsTieBreakers>
 </document>
