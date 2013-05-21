@@ -11,4 +11,12 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+
+static NSString* API_NUMBER = @"4152336443";
+static NSString* API_KEY = @"3f9217f5158dc8f0f707d0a5f079c05286f0f9b3";
+
+static NSString* linkForGET = @"https://api.sendhub.com/v1/contacts/?username=%@&api_key=%@";
+static NSString* linkToMessage = @"https://api.sendhub.com/v1/messages/?username=%@\&api_key=%@";
+
+
 #endif
