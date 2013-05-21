@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "MasterViewController.h"
+#import "APIsRequest.h"
 
 @interface DetailViewController ()
 - (void)configureView;
@@ -44,6 +45,7 @@
     }
 }
 
+// Disables input if contact exists
 - (IBAction)disableInput:(id)sender
 {
     if([((UITextField*)sender).text length] > 0) {
@@ -67,6 +69,7 @@
     self.detailPhoneTextField.text = tenDigitNumber;
 }
 
+// Loads view for empty contact
 - (void)configureEmptyView
 {
     self.navigationItem.title = @"New";
@@ -88,26 +91,25 @@
     if([self.detailNameTextField.text length] > 0 && [self.detailPhoneTextField.text length] > 0) {
         self.detailItem.name = self.detailNameTextField.text;
         self.detailItem.number = self.detailPhoneTextField.text;
-        alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Contact added" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [APIsRequest saveContactName:self.detailNameTextField.text andPhone:self.detailPhoneTextField.text]; // call API
+        
+        // alert only for tests
+        
+        alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                                           message:@"Contact added"
+                                          delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
     }
     else
-        alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Contact not added" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                           message:@"Contact not added"
+                                          delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
     [alert show];
     [alert release];
-}
-
-- (IBAction)inputReturn:(id)sender
-{
-    if(((UIButton*)sender).tag == 1) { // Name
-        if([self.detailItem name] != self.detailNameTextField.text)
-            self.detailItem.name = self.detailNameTextField.text;
-    }
-    else if(((UIButton*)sender).tag == 2) { // Phone
-        if([self.detailItem number] != self.detailPhoneTextField.text)
-            self.detailItem.number = self.detailPhoneTextField.text;
-    }
-    
-    [sender resignFirstResponder];
 }
 
 - (void)viewDidLoad

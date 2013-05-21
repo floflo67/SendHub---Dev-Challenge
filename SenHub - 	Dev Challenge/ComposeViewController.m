@@ -20,6 +20,7 @@
     self.ContactID = ID;
 }
 
+// Show keyboard or not
 - (IBAction)inputReturn:(id)sender
 {
     if(self.messageTextField.text.length > 0) { // checks if message exists
@@ -28,6 +29,7 @@
     }
 }
 
+// call API
 -(void)sendMessage
 {
     [APIsRequest sendText:self.messageTextField.text toContactID:self.contactID];
