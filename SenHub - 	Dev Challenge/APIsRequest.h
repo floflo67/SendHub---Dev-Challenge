@@ -10,4 +10,7 @@
 
 @interface APIsRequest : NSObject
 
++ (NSArray*)getListContacts;
++ (void)sendText:(NSString*)text toContactID:(NSString*)contactID;
+
 @end

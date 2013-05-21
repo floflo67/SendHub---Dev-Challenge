@@ -11,7 +11,6 @@
 @interface ComposeViewController : UIViewController <UITextFieldDelegate>
 
 @property (retain, nonatomic) IBOutlet UITextField *messageTextField;
-@property (strong, nonatomic) NSString* message;
-@property (strong, nonatomic) NSString* ContactID;
+@property (strong, nonatomic) NSString* contactID;
 
 @end

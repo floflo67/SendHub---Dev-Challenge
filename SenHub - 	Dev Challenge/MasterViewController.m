@@ -9,7 +9,7 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "ContactsViewController.h"
-#import "AppDelegate.h"
+#import "APIsRequest.h"
 
 @interface MasterViewController ()
 
@@ -40,13 +40,13 @@
         self.contacts = [[[NSMutableArray alloc] init] autorelease];
     }
     
-    self.contacts = [AppDelegate getListContacts]; // Get the list of contacts
+    self.contacts = (NSMutableArray*)[APIsRequest getListContacts]; // Get the list of contacts
     
     // Allow suppressing
     // self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    // UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)] autorelease];
-    // self.navigationItem.rightBarButtonItem = addButton;
+     //UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)] autorelease];
+     //self.navigationItem.rightBarButtonItem = addButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,13 +57,13 @@
 /*
 - (void)insertNewObject:(id)sender
 {
-    if (!contacts) {
-        contacts = [[NSMutableArray alloc] init];
+    if (!self.contacts) {
+        self.contacts = [[NSMutableArray alloc] init];
     }
     
-    ContactsViewController* cvc = [[ContactsViewController alloc] initWithID:1 name:@"New" number:123456789 uri:@""];
+    ContactsViewController* cvc = [[ContactsViewController alloc] initWithID:@"" name:@"New" number:@"123456789" uri:@""];
     
-    [contacts insertObject:cvc atIndex:0];
+    [self.contacts insertObject:cvc atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }*/

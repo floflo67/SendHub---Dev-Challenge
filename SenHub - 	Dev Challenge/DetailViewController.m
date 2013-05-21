@@ -16,7 +16,7 @@
 
 - (void)dealloc
 {
-    [self.detailItem release];
+    [_detailItem release];
     [self.detailPhoneTextField release];
     [self.detailNameTextField release];
     [super dealloc];
@@ -26,9 +26,9 @@
 
 - (void)setDetailItem:(id)newDetailItem
 {
-    if (self.detailItem != newDetailItem) {
-        [self.detailItem release];
-        self.detailItem = [newDetailItem retain];
+    if (_detailItem != newDetailItem) {
+        [_detailItem release];
+        _detailItem = [newDetailItem retain];
         [self configureView];
     }
 }
