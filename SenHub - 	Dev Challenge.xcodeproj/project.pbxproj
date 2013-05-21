@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		541379C7174B321E00789CFD /* APIsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 541379C6174B321E00789CFD /* APIsRequest.m */; };
 		54B4BBA3174A916100F6215B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B4BBA2174A916100F6215B /* UIKit.framework */; };
 		54B4BBA5174A916100F6215B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B4BBA4174A916100F6215B /* Foundation.framework */; };
 		54B4BBA7174A916100F6215B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B4BBA6174A916100F6215B /* CoreGraphics.framework */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		541379C5174B321E00789CFD /* APIsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIsRequest.h; sourceTree = "<group>"; };
+		541379C6174B321E00789CFD /* APIsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIsRequest.m; sourceTree = "<group>"; };
 		54B4BB9F174A916100F6215B /* SenHub - 	Dev Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SenHub - \tDev Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B4BBA2174A916100F6215B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		54B4BBA4174A916100F6215B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -100,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				54B4BBC8174A99CF00F6215B /* Classes */,
+				541379C5174B321E00789CFD /* APIsRequest.h */,
+				541379C6174B321E00789CFD /* APIsRequest.m */,
 				54B4BBB1174A916100F6215B /* AppDelegate.h */,
 				54B4BBB2174A916100F6215B /* AppDelegate.m */,
 				54B4BBBA174A916100F6215B /* MainStoryboard.storyboard */,
@@ -212,6 +217,7 @@
 				54B4BBCB174A9A8E00F6215B /* ContactsViewController.m in Sources */,
 				54B4BBCE174A9AA400F6215B /* MessagesViewController.m in Sources */,
 				54B4BBD1174ABADF00F6215B /* ComposeViewController.m in Sources */,
+				541379C7174B321E00789CFD /* APIsRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
