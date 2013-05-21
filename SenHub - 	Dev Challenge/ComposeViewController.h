@@ -12,6 +12,6 @@
 
 @property (retain, nonatomic) IBOutlet UITextField *messageTextField;
 @property (strong, nonatomic) NSString* message;
-@property (nonatomic) int ContactID;
+@property (strong, nonatomic) NSString* ContactID;
 
 @end

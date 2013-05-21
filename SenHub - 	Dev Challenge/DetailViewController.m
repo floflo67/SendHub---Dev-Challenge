@@ -64,7 +64,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"sendMessage"]) {
-        long ID = self.detailItem.ID;
+        NSString* ID = self.detailItem.ID;
         [[segue destinationViewController] setID:ID];
     }
 }

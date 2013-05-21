@@ -15,7 +15,7 @@
 
 @implementation ComposeViewController
 
-- (void)setID:(long)ID
+- (void)setID:(NSString*)ID
 {
     self.ContactID = ID;
 }
@@ -48,7 +48,7 @@
 
     // --data '{"contacts" : [1111],"text" : "Testing"}'
     // should be like this. Not working (yet)
-    [request setValue:[NSString stringWithFormat:@"'{\"contacts\" : [%d],\"text\" : \"%@\"}'", self.ContactID, self.message]
+    [request setValue:[NSString stringWithFormat:@"'{\"contacts\" : [%@],\"text\" : \"%@\"}'", self.ContactID, self.message]
                        forHTTPHeaderField:@"data"]; 
     
     NSError* error;
@@ -91,6 +91,7 @@
 
 - (void)dealloc {
     [self.message release];
+    [self.ContactID release];
     [self.messageTextField release];
     [super dealloc];
 }

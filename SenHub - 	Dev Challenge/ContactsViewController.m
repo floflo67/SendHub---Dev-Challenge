@@ -15,6 +15,7 @@
 @implementation ContactsViewController
 
 - (void)dealloc {
+    [self.ID release];
     [self.name release];
     [self.resource_uri release];
     [self.number release];
@@ -34,7 +35,7 @@
 {
     self = [super init];
     if (self) {
-        [self initWithID:(long)[dict objectForKey:@"ID"]
+        [self initWithID:[dict objectForKey:@"ID"]
                     name:[dict objectForKey:@"name"]
                   number:[dict objectForKey:@"number"]
                      uri:[dict objectForKey:@"uri"]];
@@ -42,7 +43,7 @@
     return self;
 }
 
-- (id)initWithID:(long)ID name:(NSString*)name number:(NSString*)number uri:(NSString*)uri
+- (id)initWithID:(NSString*)ID name:(NSString*)name number:(NSString*)number uri:(NSString*)uri
 {
     if (!self) {
         self = [super init];
