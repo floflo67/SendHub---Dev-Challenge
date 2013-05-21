@@ -55,14 +55,14 @@
     return array;
 }
 
-+ (void)addContact
++ (void)saveContactName:(NSString*)name andPhone:(NSString*)phone
 {
     // Make a call to the API to add a contact
     // Should end like this:
-    /* curl -H "Content-Type: application/json" 
-            -X POST 
-            --data '{"name" : "John Doe", "number": "6501234567"}' 
-            https://api.sendhub.com/v1/contacts/?username=NUMBER\&api_key=APIKEY
+    /* curl -H "Content-Type: application/json"
+     -X POST
+     --data '{"name" : "John Doe", "number": "6501234567"}'
+     https://api.sendhub.com/v1/contacts/?username=NUMBER\&api_key=APIKEY
      */
 }
 
