@@ -24,10 +24,6 @@
 
 - (void)dealloc
 {
-    for (ContactsViewController* c in self.contacts) { // Release each item in array
-        [c release];
-    }
-    
     [self.contacts release];
     [super dealloc];
 }
@@ -45,7 +41,10 @@
     // Allow suppressing
     // self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-     //UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)] autorelease];
+     /*UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                 target:self
+                                                                                 action:@selector(insertNewObject)]
+                                   autorelease];*/
      //self.navigationItem.rightBarButtonItem = addButton;
 }
 
@@ -55,15 +54,12 @@
 }
 
 /*
-- (void)insertNewObject:(id)sender
+- (void)insertNewObject
 {
-    if (!self.contacts) {
-        self.contacts = [[NSMutableArray alloc] init];
+    if (!_contacts) {
+        _contacts = [[NSMutableArray alloc] init];
     }
-    
-    ContactsViewController* cvc = [[ContactsViewController alloc] initWithID:@"" name:@"New" number:@"123456789" uri:@""];
-    
-    [self.contacts insertObject:cvc atIndex:0];
+    [_contacts insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }*/

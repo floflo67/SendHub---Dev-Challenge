@@ -14,11 +14,21 @@
 
 @implementation DetailViewController
 
+- (id)init
+{
+    self = [super init];
+    if(self) {
+        [self setDetailItem:nil];
+    }
+    return self;
+}
+
 - (void)dealloc
 {
     [_detailItem release];
     [self.detailPhoneTextField release];
     [self.detailNameTextField release];
+    [_sendMessageButton release];
     [super dealloc];
 }
 
@@ -35,30 +45,32 @@
 
 - (IBAction)disableInput:(id)sender
 {
-    if(((UITextField*)sender).text) {
+    if(((UITextField*)sender).text && ![((UITextField*)sender).text isEqualToString:@"New"]) {
         [sender resignFirstResponder];
     }
 }
 
+// Loads view for existing contact
 - (void)configureView
-{
-    self.detailNameTextField.delegate = self;
-    self.detailPhoneTextField.delegate = self;
+{    
+    self.detailNameTextField.text = [self.detailItem name];
     
-    if (self.detailItem) {
-        self.detailNameTextField.text = [self.detailItem name];
-        
-        // Converts phone number
-        // +12223334444 becomes +1 (222) 333-4444
-        // Works only for US numbers
-        NSString *tenDigitNumber = [[self.detailItem number] substringFromIndex:1];
-        tenDigitNumber = [tenDigitNumber stringByReplacingOccurrencesOfString:@"(\\d{1})(\\d{3})(\\d{3})(\\d{4})"
-                                                                   withString:@"+$1 ($2) $3-$4"
-                                                                      options:NSRegularExpressionSearch
-                                                                        range:NSMakeRange(0, [tenDigitNumber length])];
-        self.detailPhoneTextField.text = tenDigitNumber;
-        
-    }
+    // Converts phone number
+    // +12223334444 becomes +1 (222) 333-4444
+    // Works only for US numbers
+    NSString *tenDigitNumber = [[self.detailItem number] substringFromIndex:1];
+    tenDigitNumber = [tenDigitNumber stringByReplacingOccurrencesOfString:@"(\\d{1})(\\d{3})(\\d{3})(\\d{4})"
+                                                               withString:@"+$1 ($2) $3-$4"
+                                                                  options:NSRegularExpressionSearch
+                                                                    range:NSMakeRange(0, [tenDigitNumber length])];
+    self.detailPhoneTextField.text = tenDigitNumber;
+}
+
+- (void)configureEmptyView
+{
+    self.navigationItem.title = @"New";
+    [self setDetailItem:[[ContactsViewController alloc] init]];
+    self.sendMessageButton.hidden = NO;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -86,11 +98,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = [self.detailItem name];
-    //UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit                                                                                target:self action:@selector(changeText:)] autorelease];
-    //self.navigationItem.rightBarButtonItem = addButton;
-    
-    [self configureView];
+    self.detailNameTextField.delegate = self;
+    self.detailPhoneTextField.delegate = self;
+    self.sendMessageButton.hidden = NO;
+ 
+    if(self.detailItem) {
+        self.navigationItem.title = [self.detailItem name];
+        [self configureView];
+    }
+    else {
+        UIBarButtonItem *addButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                                                    target:self
+                                                                                    action:@selector(changeText:)]
+                                      autorelease];
+        self.navigationItem.rightBarButtonItem = addButton;
+        [self configureEmptyView];
+    }
 }
 
 - (void)didReceiveMemoryWarning

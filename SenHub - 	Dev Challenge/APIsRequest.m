@@ -55,6 +55,17 @@
     return array;
 }
 
++ (void)addContact
+{
+    // Make a call to the API to add a contact
+    // Should end like this:
+    /* curl -H "Content-Type: application/json" 
+            -X POST 
+            --data '{"name" : "John Doe", "number": "6501234567"}' 
+            https://api.sendhub.com/v1/contacts/?username=NUMBER\&api_key=APIKEY
+     */
+}
+
 + (void)sendText:(NSString*)text toContactID:(NSString*)contactID
 {
     // Make a call to the API to send the message
@@ -74,8 +85,9 @@
 
     // --data '{"contacts" : [1111],"text" : "Testing"}'
     // should be like this. Not working (yet)
-    [request setValue:[NSString stringWithFormat:@"'{\"contacts\" : [%@],\"text\" : \"%@\"}'", contactID, text]
-    forHTTPHeaderField:@"data"];
+    [request setValue:[NSString
+                       stringWithFormat:@"'{\"contacts\" : [%@],\"text\" : \"%@\"}'", contactID, text]
+             forHTTPHeaderField:@"data"];
 
     NSError* error;
     NSURLResponse* response;

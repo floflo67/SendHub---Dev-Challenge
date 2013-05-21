@@ -15,5 +15,6 @@
 
 @property (retain, nonatomic) IBOutlet UITextField *detailPhoneTextField;
 @property (retain, nonatomic) IBOutlet UITextField *detailNameTextField;
+@property (retain, nonatomic) IBOutlet UIButton *sendMessageButton;
 
 @end

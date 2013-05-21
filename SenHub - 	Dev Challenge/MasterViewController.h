@@ -10,6 +10,6 @@
 
 @interface MasterViewController : UITableViewController
 
-@property (retain, nonatomic) NSMutableArray* contacts;
+@property (strong, nonatomic) NSMutableArray* contacts;
 
 @end
